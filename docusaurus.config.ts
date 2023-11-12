@@ -1,11 +1,11 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
+import type { Config } from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const { themes } = require('prism-react-renderer');
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+const config: Config = {
     title: 'The Ancient Archives',
     tagline: 'The knowledge of old',
     url: 'https://archives.letsbuilda.dev/',
@@ -13,15 +13,9 @@ const config = {
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
+    organizationName: 'letsbuilda',
+    projectName: 'archives.letsbuilda.dev',
 
-    // GitHub pages deployment config.
-    // If you aren't using GitHub pages, you don't need these.
-    organizationName: 'letsbuilda', // Usually your GitHub org/user name.
-    projectName: 'archives.letsbuilda.dev', // Usually your repo name.
-
-    // Even if you don't use internalization, you can use this field to set useful
-    // metadata like html lang. For example, if your site is Chinese, you may want
-    // to replace "en" with "zh-Hans".
     i18n: {
         defaultLocale: 'en',
         locales: ['en'],
@@ -30,24 +24,20 @@ const config = {
     presets: [
         [
             'classic',
-            /** @type {import('@docusaurus/preset-classic').Options} */
-            ({
+            {
                 docs: {
-                    routeBasePath: '/', // Serve the docs at the site's root
+                    routeBasePath: '/',
                     sidebarPath: require.resolve('./sidebars.js'),
-                    // Please change this to your repo.
-                    // Remove this to remove the "edit this page" links.
                     editUrl:
                         'https://github.com/letsbuilda/archives.letsbuilda.dev/tree/main/',
                 },
                 blog: false,
-            }),
+            } satisfies Preset.Options,
         ],
     ],
 
     themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-        ({
+        {
             navbar: {
                 title: 'The Ancient Archives',
                 logo: {
@@ -100,7 +90,7 @@ const config = {
                 darkTheme: darkCodeTheme,
                 additionalLanguages: ['powershell'],
             },
-        }),
+        } satisfies Preset.ThemeConfig,
 };
 
 module.exports = config;
